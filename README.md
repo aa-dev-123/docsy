@@ -13,6 +13,9 @@ rails generate devise:install
 # Add following line in config/environments/development.rb
 config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 # This adds the functionality of devise to the User model
+# The below command will generate the user migration which has all the settings for devsie availablle module.
 rails generate devise User
+# generates the views of the devise model i.e User
+rails generate devise:views
+
 ```
-- The above command will generate the user migration which has all the settings for devsie availablle module.
