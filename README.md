@@ -19,3 +19,9 @@ rails generate devise User
 rails generate devise:views
 
 ```
+
+## ActiveStorage
+
+- TO create three tables run ```bin/rails active_storage:install``` and ```bin/rails db:migrate```.
+- Using ActiveStorage on local level
+- Service for local and test env are present in config/storage.yml, further these services can be picked in respective environmental files config/environment/development.rb
