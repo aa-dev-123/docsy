@@ -16,8 +16,28 @@ Article Show
     </p>
   </div>
   <div class="col-3">
-    <% if current_user.id != @article.user.id %>
       <button type="button" class="btn btn-info">Purchase</button>
+  </div>
+  <div>
+    <% if @article.document.attached? %>
+      Downloadable Link: <%= link_to @article.document.filename.to_s, rails_blob_path(@article.document, disposition: "attachment") %>
+    <% else %>
+      No document available
     <% end %>
+
+    <% if @article.document.previewable? %>
+      <%= image_tag @article.document.preview(resize_to_limit: [800, 800]).processed, class: "img-fluid" %>
+    
+    <% elsif @article.document.image? %>
+      <%= image_tag @article.document, class: "img-fluid" %>
+    
+    <% elsif @article.document.content_type == "application/pdf" %>
+      <embed src="<%= url_for(@article.document) %>" type="application/pdf" width="100%" height="600px" />
+    
+    <% else %>
+      <p> This document cannot be previewed. You can <%= link_to "download it", rails_blob_path(@article.document, disposition: "attachment") %>.</p>
+    <% end %>
+    <br>
+    <br>
   </div>
 </div>
