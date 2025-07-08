@@ -1,0 +1,19 @@
+<h1>
+  List of all the Articles
+</h1>
+
+<% @articles.each do |article| %>
+  <div>
+    <h3>
+      <%= article.title %>
+    </h3>
+    <h4>
+      <%= article.description %>
+    </h4>
+    <h4>
+      Created by: <%= article.user.email %>
+    </h4>
+    <%= link_to "Show", article_path(article) %>
+    </br>
+  </div>
+<% end %>
