@@ -1,9 +1,23 @@
-<h3>
-<%= @article.title %>
-</h3>
-<h4>
-<%= @article.description %>
-</h4>
-<h4>
-Created by: <%= @article.user.email %>
-</h4>
+<h2>
+Article Show
+</h2>
+
+<div class="row">
+  <div class="col-9">
+    <h5>
+      <%= @article.title %>
+    </h5>
+    <p>
+      <%= @article.description %>
+    </p>
+    <br>
+    <p class="fw-bold">
+      Created by: <%= @article.user.email %>
+    </p>
+  </div>
+  <div class="col-3">
+    <% if current_user.id != @article.user.id %>
+      <button type="button" class="btn btn-info">Purchase</button>
+    <% end %>
+  </div>
+</div>
