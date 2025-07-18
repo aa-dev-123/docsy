@@ -14,19 +14,26 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <div class="container mt-4">
-      <div class="float-right">
-        <% if user_signed_in? %>
-          <p> Signed in as <%= current_user.email %> </p>
-          <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-link", form: { "data-turbo" => false } %>
-        <% else %>
-          <%= link_to "Sign in", new_user_session_path %> 
-        <% end %>
-      </div>
-      <p class="notice text-success"><%= notice %></p>
-      <p class="alert text-danger"><%= alert %></p>
-      <%= yield %>
+  <body class="bg-light">
+  <div class="container mt-4">
+    <div class="d-flex justify-content-end align-items-center mb-3">
+      <% if user_signed_in? %>
+        <p class="mb-0 me-2">Signed in as <%= current_user.email %></p>
+        <%= button_to "Sign out",
+              destroy_user_session_path,
+              method: :delete,
+              class: "btn btn-link p-0",
+              form: { "data-turbo" => false } %>
+      <% else %>
+        <%= link_to "Sign in", new_user_session_path, class: "btn btn-link p-0" %> 
+      <% end %>
     </div>
+
+    <div id="flash" class="flash">
+      <%= render "layouts/flash" %>
+    </div>
+
+    <%= yield %>
+  </div>
   </body>
 </html>
