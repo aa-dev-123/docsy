@@ -6,8 +6,26 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
   end
+
   def new
     @article = current_user.articles.build
+  end
+
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+      end
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def create
