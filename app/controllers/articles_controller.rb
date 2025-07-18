@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
 
     if @article.update(article_params)
       respond_to do |format|
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = "Article was successfully updated." }
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
       end
     else
@@ -33,7 +33,7 @@ class ArticlesController < ApplicationController
     if @article.save
       respond_to do |format|
         format.html { redirect_to article_path(@article), notice: "Article was successfully created." }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = "Article was successfully created." }
       end
     else
       render :new, status: :unprocessable_entity
@@ -46,7 +46,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to quotes_path, notice: "Quote was successfully destroyed." }
-      format.turbo_stream
+      format.turbo_stream { flash.now[:notice] = "Quote was successfully destroyed." }
     end
   end
  

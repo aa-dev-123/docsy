@@ -29,8 +29,9 @@
       <% end %>
     </div>
 
-    <p class="notice text-success"><%= notice %></p>
-    <p class="alert text-danger"><%= alert %></p>
+    <div id="flash" class="flash">
+      <%= render "layouts/flash" %>
+    </div>
 
     <%= yield %>
   </div>
