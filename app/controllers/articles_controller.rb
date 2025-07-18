@@ -13,9 +13,12 @@ class ArticlesController < ApplicationController
   def create
     @article = current_user.articles.build(article_params)
     if @article.save
-      redirect_to article_path(@article), notice: "Article was successfully created."
+      respond_to do |format|
+        format.html { redirect_to article_path(@article), notice: "Article was successfully created." }
+        format.turbo_stream
+      end
     else
-      render :new, alert: "Article could not be created."
+      render :new, status: :unprocessable_entity
     end
   end
 

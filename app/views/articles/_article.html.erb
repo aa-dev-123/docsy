@@ -1,0 +1,23 @@
+
+<div class="container p-3 m-3 bg-white rounded align-middle">
+  <div class="row">
+    <div class="col-10">
+      <%= link_to article.title, article_path(article), class: "align-middle link-offset-2 link-underline link-underline-opacity-0" %>
+    </div>
+    <div class="col-1">
+      <%= link_to article_path(article),
+        method: :delete,
+        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+        class: "text-danger float-end" do %>
+          <i class="fa-solid fa-trash" aria-hidden="true"></i>
+      <% end %>
+    </div>
+    <div class="col-1">
+      <%= link_to edit_article_path(article),
+        class: "text-info" do %>
+          <i class="fas fa-edit" aria-hidden="true"></i>
+    <% end %>
+  </div>
+
+  </div>
+</div>
