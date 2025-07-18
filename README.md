@@ -38,3 +38,6 @@ The Articles section has been updated to use turbo-rails:
  - Turbo Frames: Each article is wrapped inside a Turbo Frame (turbo_frame_tag dom_id(article)) so that editing or deleting only affects that row.
 
 - Turbo Streams: The controller responds with Turbo Stream to update DOM elements on successful actions.
+
+- For real-time updates, redis is being added, models should have callbacks which broadcast messages and these msgs can be listened/subscribed by views using `turbo_stream_from`.
+
