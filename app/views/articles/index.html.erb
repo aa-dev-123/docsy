@@ -1,5 +1,15 @@
 <h2>Articles</h2>
-<p>The list of all the articles </p>            
+<p>The list of all the articles </p>
+
+<%= link_to 'New Article',
+  new_article_path,
+  class: "btn btn-primary",
+  data: { turbo_frame: dom_id(Article.new) }
+%>
+
+<%= turbo_frame_tag dom_id(Article.new) do %>
+<% end %>
+
 <table class="table table-hover">
   <thead>
     <tr>
