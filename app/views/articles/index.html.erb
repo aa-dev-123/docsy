@@ -3,13 +3,16 @@
 
 <%= link_to 'New Article',
   new_article_path,
-  class: "btn btn-primary",
+  class: "btn btn-primary float-end",
   data: { turbo_frame: dom_id(Article.new) }
 %>
+
+<br>
 
 <%= turbo_frame_tag dom_id(Article.new) do %>
 <% end %>
 
+<br>
 <%= turbo_frame_tag "articles" do %>
   <%= render @articles %>
 <% end %>
