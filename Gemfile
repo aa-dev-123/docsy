@@ -22,6 +22,8 @@ gem "turbo-rails"
 
 gem "font-awesome-sass"
 
+gem 'redis', '~> 4.0'
+
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
