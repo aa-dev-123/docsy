@@ -1,0 +1,2 @@
+<%= turbo_stream.update dom_id(@article), partial: "articles/article", locals: { article: @article } %>
+<%= render_turbo_stream_flash_messages %>
